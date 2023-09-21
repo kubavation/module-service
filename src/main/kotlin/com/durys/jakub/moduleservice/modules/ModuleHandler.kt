@@ -7,18 +7,18 @@ import org.springframework.web.reactive.function.server.ServerResponse
 import reactor.core.publisher.Mono
 
 @Component
-internal class ModuleHandler(val moduleRepository: ModuleRepository) {
+internal class ModuleHandler(val moduleService: ModuleService) {
 
     fun modules(request: ServerRequest): Mono<ServerResponse> {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(moduleRepository.findAll(), Module::class.java);
+                .body(moduleService.findAll(), Module::class.java);
     }
 
     fun edit(request: ServerRequest): Mono<ServerResponse> {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(moduleRepository.findAll(), Module::class.java);
+                .body(moduleService.edit(request.pathVariable("moduleShortcut"), request.bodyToMono(Module::class.java)), Module::class.java);
     }
 
 }
