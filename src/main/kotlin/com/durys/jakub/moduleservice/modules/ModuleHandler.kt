@@ -15,4 +15,10 @@ internal class ModuleHandler(val moduleRepository: ModuleRepository) {
                 .body(moduleRepository.findAll(), Module::class.java);
     }
 
+    fun edit(request: ServerRequest): Mono<ServerResponse> {
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(moduleRepository.findAll(), Module::class.java);
+    }
+
 }

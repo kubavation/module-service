@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-internal class Events(@Value("\${queue.events}") private val queue: String, val rabbitTemplate: RabbitTemplate) {
+internal class Events(@Value("\${queue.events}") private val queue: String, private val rabbitTemplate: RabbitTemplate) {
 
     fun emit(event: Event) {
         rabbitTemplate.convertAndSend(queue, event)
