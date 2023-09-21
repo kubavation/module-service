@@ -9,6 +9,11 @@ spring:
       database: modules
       port: 27017
       host: localhost
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 server:
   port: 0
 
