@@ -3,9 +3,9 @@ spring:
     name: MODULE-SERVICE
   data:
     mongodb:
-      authentication-database: admin
-      username: root
-      password: root
+      authentication-database: modules
+      username: module-admin
+      password: module-admin
       database: modules
       port: 27017
       host: localhost
@@ -15,7 +15,7 @@ spring:
     username: guest
     password: guest
 server:
-  port: 0
+  port: 9666
 
 eureka:
   client:
