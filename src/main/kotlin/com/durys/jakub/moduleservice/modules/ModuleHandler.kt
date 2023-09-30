@@ -16,9 +16,9 @@ internal class ModuleHandler(val moduleService: ModuleService, val moduleConfigu
                 .body(moduleService.findAll(), Module::class.java);
     }
 
-    fun moduleUrl(request: ServerRequest) = ServerResponse.ok()
+    fun moduleUrl(request: ServerRequest): Mono<ServerResponse> = ServerResponse.ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .body(moduleConfigurationService.moduleUrl(request.pathVariable("moduleShortcut")), ModuleConfig::class.java)
+            .bodyValue(moduleConfigurationService.moduleUrl(request.pathVariable("moduleShortcut")))
 
     fun edit(request: ServerRequest): Mono<ServerResponse> {
         return ServerResponse.ok()
