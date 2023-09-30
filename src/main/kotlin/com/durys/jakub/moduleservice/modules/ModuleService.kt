@@ -13,7 +13,7 @@ internal class ModuleService(private val moduleRepository: ModuleRepository,
 
     fun edit(moduleShortcut: String, module: Mono<Module>): Mono<Module> {
 
-       return moduleRepository.findById(moduleShortcut)
+       return moduleRepository.findByShortcut(moduleShortcut)
                .zipWith(module)
                .map { of(it.t2) } //todo
                .doOnSuccess { events.emit(ModuleShortcutChangedEvent(moduleShortcut, it.shortcut)) }
