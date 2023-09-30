@@ -15,6 +15,7 @@ internal class Router {
         accept(MediaType.APPLICATION_JSON).nest {
             "/api/modules".nest {
                 GET("", handler::modules)
+                GET("/{moduleShortcut}/config", handler::moduleUrl)
                 PUT("/{moduleShortcut}", handler::edit)
             }
         }
